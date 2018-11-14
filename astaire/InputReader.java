@@ -6,19 +6,20 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileReader2 {
+public class InputReader {
 	public static void main(String[] args) {
 		String csvFile = "assets/danceShowData_dances.csv";
 		BufferedReader br = null;
 		String line = "";
-		String cvsSplitBy = ",";
 		
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
 			while ((line = br.readLine()) != null) {
 				//using commas as seperators
-				String[] dances = line.split(cvsSplitBy);
-				System.out.println(dances);
+				String[] dances = line.split(",");
+				for (String s : dances) {
+					System.out.println(s);
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
