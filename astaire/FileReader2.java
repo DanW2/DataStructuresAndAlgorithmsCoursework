@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class FileReader2 {
 	public static void main(String[] args) {
-		String csvFile = ".../astaire.assets/danceShowData_dances.csv";
+		String csvFile = "assets/danceShowData_dances.csv";
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
