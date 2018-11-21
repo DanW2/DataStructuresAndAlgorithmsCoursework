@@ -11,21 +11,31 @@ package astaire;
  * @author Sylvia Wong
  * @version 08/11/2018
  */
-public interface Controller {
+public class Controller {
+	
+	private InputReader i;
 	
 	/**
 	 * Lists the names of all performers in a specified dance.
 	 * @param dance	a specified dance in the dance show
 	 * @return the name of all performers that are in the specified dance. 
 	 */
-	String listAllDancersIn(String dance);
+	String listAllDancersIn(String dance) {
+		
+		i = new InputReader("assets/danceShowData_dances.csv");
+		System.out.println("list all dancers in");
+		return "a";
+	}
 	
 	/**
 	 * Lists all dance numbers and the name of the respective performers in alphabetical order.
 	 * @return	a String representation of dance numbers 
 	 * 			and the name of the respective performers in alphabetical order
 	 */
-	String listAllDancesAndPerformers();
+	String listAllDancesAndPerformers() {
+		System.out.println("list all dancers and p");
+		return "b";
+	}
 
 	/**
 	 * Checks feasibility of a given running order.
@@ -33,7 +43,10 @@ public interface Controller {
 	 * @param gaps the required number of gaps between dances for each dancer
 	 * @return	a String representation of potential issues
 	 */
-	String checkFeasibilityOfRunningOrder(String filename, int gaps);
+	String checkFeasibilityOfRunningOrder(String filename, int gaps) {
+		System.out.println("f");
+		return "c";
+	}
 	
 	/**
 	 * Generates a running order of the dances for the dance show.
@@ -41,5 +54,8 @@ public interface Controller {
 	 * @param  
 	 * @return	a String representation of the generate running order
 	 */
-	String generateRunningOrder(int gaps);
+	String generateRunningOrder(int gaps) {
+		System.out.println("r");
+		return "d";
+	}
 }

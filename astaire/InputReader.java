@@ -8,8 +8,7 @@ import java.util.HashMap;
 
 public class InputReader {
 
-	public static void main(String[] args) {
-		String csvFile = "assets/danceShowData_dances.csv";
+	public InputReader(String csvFile) {
 		BufferedReader br = null;
 		String line = "";
 		HashMap<String, String[]> map = new HashMap<String, String[]>();
