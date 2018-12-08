@@ -3,6 +3,8 @@
  */
 package astaire;
 
+import java.util.HashMap;
+
 /**
  * A controller for the dance show programme generator system.
  * This controller includes the 4 features that the intended
@@ -14,17 +16,19 @@ package astaire;
 public class Controller {
 	
 	private InputReader i;
+	private DancersStorage ds;
 	
+	public Controller() {
+		i = new InputReader("assets/danceShowData_dances.csv");
+		ds = i.getDancersStorage();
+	}
 	/**
 	 * Lists the names of all performers in a specified dance.
 	 * @param dance	a specified dance in the dance show
 	 * @return the name of all performers that are in the specified dance. 
 	 */
 	String listAllDancersIn(String dance) {
-		
-		i = new InputReader("assets/danceShowData_dances.csv");
-		System.out.println("list all dancers in");
-		return "a";
+		return(ds.getDance(dance).toString());
 	}
 	
 	/**
@@ -33,8 +37,8 @@ public class Controller {
 	 * 			and the name of the respective performers in alphabetical order
 	 */
 	String listAllDancesAndPerformers() {
-		System.out.println("list all dancers and p");
-		return "b";
+		ds.sortDances();
+		return ds.getSortedDances();
 	}
 
 	/**

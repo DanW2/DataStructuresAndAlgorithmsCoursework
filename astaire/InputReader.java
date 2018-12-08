@@ -7,29 +7,24 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class InputReader {
+	private DancersStorage ds;
 
 	public InputReader(String csvFile) {
 		BufferedReader br = null;
 		String line = "";
-		HashMap<String, String[]> map = new HashMap<String, String[]>();
-		
+		ds = new DancersStorage();
+
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
 			while ((line = br.readLine()) != null) {
-				//using commas as seperators
+				// using commas as seperators
 				String[] dances = line.split("\t");
 				String[] dancers = dances[1].split(",");
-				map.put(dances[0], dancers);
-			}
-			for(String k : map.keySet()) {
-				String[] s = (map.get(k));
-				
-				System.out.println("Dance: " + k);
-				System.out.println("Dancers:" );
-				for(String v : s) {
-					System.out.println(v);
+				for(int i = 0; i < dances.length; i++) {
+					ds.addDances(dances[i], dancers);
 				}
 			}
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -44,5 +39,9 @@ public class InputReader {
 			}
 		}
 
-}	
+	}
+
+	public DancersStorage getDancersStorage() {
+		return ds;
+	}
 }
