@@ -6,19 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DancersStorage {
-	private HashMap<String, String[]> dances;
+	private HashMap<String, String> dances;
 	private String sortedDances;
+	private InputReader ir;
 
-	public DancersStorage() {
-		dances = new HashMap<String, String[]>();
+	public DancersStorage(String f) {
+		ir = new InputReader(f);
+		dances = ir.getPerformance();
 		sortedDances = "";
 	}
 
-	public void addDances(String Dance, String[] dancers) {
-		dances.put(Dance, dancers);
-	}
-
-	public String[] getDance(String Dance) {
+	public String getDancers(String Dance) {
 		return dances.get(Dance);
 	}
 
@@ -32,13 +30,13 @@ public class DancersStorage {
 
 		// Orders all of the dancers first to then be added to the hashmap.
 		for (String d : orderedList) {
+			String[] dancerNames = dances.get(d).split(",");
 			ArrayList<String> dancers = new ArrayList<String>();
-			for (int i = 0; i < dances.get(d).length; i++) {
-				dancers.add(dances.get(d)[i]);
+			for (int i = 0; i < dancerNames.length; i++) {
+				dancers.add(dancerNames[i]);
 			}
 			Collections.sort(dancers);
-			System.out.println(dancers.get(0));
-			sortedDances += d + ": " + dancers + "\n";
+			sortedDances += d + ":" + dancers + "\n";
 		}
 
 	}
@@ -46,5 +44,6 @@ public class DancersStorage {
 	public String getSortedDances() {
 		return sortedDances;
 	}
+	
 
 }
